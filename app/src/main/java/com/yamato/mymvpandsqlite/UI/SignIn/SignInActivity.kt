@@ -21,13 +21,22 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener, SignInContract
     private lateinit var mSignInPresenter : SignInPresenter
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.activity_sign_in)
 
         initView()
         registerListener()
         initPresenter()
     }
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_sign_in)
+//
+//        initView()
+//        registerListener()
+//        initPresenter()
+//    }
 
     private fun initView(){
         mTextUsername = findViewById(R.id.text_username)

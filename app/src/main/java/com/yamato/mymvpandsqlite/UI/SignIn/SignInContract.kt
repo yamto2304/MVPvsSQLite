@@ -6,7 +6,7 @@ package com.yamato.mymvpandsqlite.UI.SignIn
             fun signInFailure(error: String?)
         }
 
-        interface Presenter {
+    interface Presenter {
             fun handleSignIn(username: String?, password: String?)
         }
     }

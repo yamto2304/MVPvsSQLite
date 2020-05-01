@@ -2,7 +2,6 @@ package com.yamato.mymvpandsqlite.UI.SignIn
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -20,23 +19,14 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener, SignInContract
     private lateinit var mButtonSignUp : Button
     private lateinit var mSignInPresenter : SignInPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
         initView()
         registerListener()
         initPresenter()
     }
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_sign_in)
-//
-//        initView()
-//        registerListener()
-//        initPresenter()
-//    }
 
     private fun initView(){
         mTextUsername = findViewById(R.id.text_username)
@@ -58,7 +48,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener, SignInContract
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.button_sign_in -> login()
-            R.id.button_sign_up -> startActivity(Intent(this, SignUpActivity::class.java))
+            R.id.button_sign_up -> startActivity(Intent(this@SignInActivity, SignUpActivity::class.java))
             }
         }
 
@@ -75,7 +65,7 @@ class SignInActivity : AppCompatActivity(), View.OnClickListener, SignInContract
         var username : String = mTextUsername.text.toString()
         var password : String = mTextPassword.text.toString()
         if(username.isEmpty()|| password.isEmpty()){
-            Toast.makeText(this, "Username or Password is Empty !", Toast.LENGTH_SHORT)
+            Toast.makeText(this, "Username or Password is Empty !", Toast.LENGTH_SHORT).show()
             return
         }
         mSignInPresenter.handleSignIn(username, password)
